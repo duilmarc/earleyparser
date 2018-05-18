@@ -1,4 +1,14 @@
-
+articulos=["la","el","las","ellos","lo","un","unos","una","unas"]
+verbos=["haber","ser","estar","tener","ir","hacer","comer","poder","decir"
+        ,"saber","ver","querer","vivir","venir","amar","salir","dar","cantar",
+        "poner","hablar","jugar","coger","escribir","dormir","leer","volver",
+        "traer","pedir","empezar","conocer"]
+sustantivos=["vez","año","tiempo","dia","cosa","hombre","mujer","nicolas","parte",
+             "vida","momento","forma","casa","mundo","caso","pais","lugar","persona",
+             "hora","trabajo","punto","mano","manera","fin","tipo","gente","ejemplo",
+             "lado","hijo","problema","cuenta","medio","palabra","niño","padre","madre",
+             "cambio","historia","idea","agua","noche","ciudad","modo","nombre","familia",
+             "realidad","obra","verdad","mes","razon","grupo","relacion","cuerpo","hecho"]
 class Grammar:
 
     def __init__(self, produccion):
