@@ -94,4 +94,17 @@ def leerarticu():
                                 contadorS+=1
                                 print (str(contadorS)+')'+palabra)
 
-leerarticu()
+#leerarticu()
+
+def leeroracion():
+
+        oracion="me lleva que valga verga todo"
+        for i in oracion.split(' '):
+                if(comparar_verbos(i-1)&comparar_verbos(i+1)&(i=='que')):
+                        print ('nicolas se la come')
+                else:
+                        print ('nicolas se la sigue comiendo')
+
+
+
+leeroracion()
