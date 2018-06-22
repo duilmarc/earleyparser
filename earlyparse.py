@@ -1,5 +1,4 @@
 class Produccion(object):
-	"""docstring for Produccion"""
 	def __init__(self, *terminos):
 		self.terminos= terminos
 	def __len__(self):
@@ -20,7 +19,6 @@ class Produccion(object):
 		return hash(self.terminos)
 
 class Regla(object):
-	"""docstring for Regla"""
 	def __init__(self, nombre, *producciones):
 		self.nombre=nombre
 		self.producciones= list(producciones)
@@ -33,7 +31,6 @@ class Regla(object):
 		
 		
 class Estado(object):
-	"""docstring for estado"""
 	def __init__(self, nombre,produccion,punto_indice,columna_de_inicio):
 		self.nombre=nombre
 		self.produccion=produccion
@@ -66,7 +63,6 @@ class Estado(object):
 		return self.produccion[self.punto_indice]
 
 class Columna(object):
-	"""docstring for Columna"""
 	def __init__(self, indice,token):
 		self.indice=indice
 		self.token=token
@@ -100,8 +96,7 @@ class Columna(object):
 			print repr(s)
 		print
 
-class Nodo(object):
-	"""docstring for nodo"""
+class Nodo(object)
 	def __init__(self, valor, hijos):
 		self.valor= valor
 		self.hijos = hijos
