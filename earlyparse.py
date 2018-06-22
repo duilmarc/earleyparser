@@ -96,7 +96,7 @@ class Columna(object):
 			print repr(s)
 		print
 
-class Nodo(object)
+class Nodo(object):
 	def __init__(self, valor, hijos):
 		self.valor= valor
 		self.hijos = hijos
@@ -105,16 +105,16 @@ class Nodo(object)
 		for hijo in self.hijos:
 			hijo.imprimir(nivel + 1)
 
-def predecir(columna, regla ):
+def predict(columna, regla ):
 	for produccion in regla.producciones:
 		columna.agregar(Estado(regla.nombre, produccion, 0 , columna))
 
-def escanear(columna, estado, token):
+def scan(columna, estado, token):
 	if token != columna.token:
 		return 
 	columna.agregar(Estado(estado.nombre, estado.produccion, estado.punto_indice + 1, estado.columna_de_inicio))
 
-def completar(columna, estado ):
+def complete(columna, estado ):
 	if not estado.esta_completado():
 		return 
 	for st in estado.columna_de_inicio:
@@ -133,20 +133,20 @@ def parseador(regla, texto):
 	for i,columna in enumerate(tabla):
 		for estado in columna:
 			if estado.esta_completado():
-				completar(columna,estado)
+				complete(columna,estado)
 			else:
 				termino = estado.siguiente_termino()
 				if isinstance(termino,Regla):
-					predecir(columna,termino)
+					predict(columna,termino)
 				elif i+1 < len(tabla):
-					escanear(tabla[i+1],estado, termino)
-    
+					scan(tabla[i+1],estado, termino)
 
 	for st in tabla[-1]:
 		if st.nombre == GAMMA_Regla and st.esta_completado():
 			return st
- 	else:
- 		raise ValueError("no esta en la gramatica")
+	else:
+		raise ValueError("no esta en la gramatica")
+
 
 def construir_arbol(estado):
 	return contruir_arbole_ayuda([],estado, len(estado.reglas)-1 ,estado.fin_de_columna)
