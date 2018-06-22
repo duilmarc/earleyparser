@@ -175,17 +175,17 @@ def contruir_arbole_ayuda(hijos, estado, indice_regla, fin_columna):
 
 #sustantivo
 SV = Regla("SV", Produccion("cine"), Produccion("peliculas"), Produccion("ninio"),
-    Produccion("personas"), Produccion("pera"), Produccion("fruta"))
+	    Produccion("personas"), Produccion("pera"), Produccion("fruta"), Produccion("pack"))
 #articulo
 AT = Regla("AT", Produccion("el"), Produccion("la"), Produccion("unas"))
 #verbo
-V = Regla("V", Produccion("vio"), Produccion("comieron"), Produccion("camino"), Produccion("jugo"))
+V = Regla("V", Produccion("vio"), Produccion("comieron"), Produccion("camino"), Produccion("jugo"), Produccion("pasa"))
 #pre
 Prp = Regla("Prp", Produccion("con"), Produccion("en"), Produccion("al"))
 #Conjun
 Cj = Regla("cj")
 #Sujeto
-St = Regla("St", Produccion(AT, SV),  Produccion("gavi"), Produccion("pedro"), Produccion("andre"))
+St = Regla("St", Produccion(AT, SV),  Produccion("gavi"), Produccion("pedro"), Produccion("andre"), Produccion("rufian"))
 St.agregar(Produccion(St, Cj))
 Cj.agregar(Produccion(SV, St))
  
@@ -194,7 +194,7 @@ Pr = Regla("VP", Produccion(V, St))
 Pr.agregar(Produccion(Pr, Cj))
 O = Regla("O", Produccion(St, Pr), Produccion(Pr))
 
-for arbol in construir_arbol(parseador(O, "gavi vio unas peliculas")):
+for arbol in construir_arbol(parseador(O, "rufian pasa el pack")):
     print "--------------------------"
     arbol.imprimir()
 
