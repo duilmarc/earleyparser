@@ -88,12 +88,12 @@ class Columna(object):
 		return False
 
 	def imprimir(self,completado_solo= False):
-		print "[%s] %r" % (self.indice, self.token)
-		print "=" * 35
+		print ("[%s] %r" % (self.indice, self.token))
+		print ("=" * 35)
 		for s in self.estados:
 			if completado_solo and not s.esta_completado():
 				continue
-			print repr(s)
+			print (repr(s))
 		print
 
 class Nodo(object):
@@ -101,7 +101,7 @@ class Nodo(object):
 		self.valor= valor
 		self.hijos = hijos
 	def imprimir(self, nivel = 0):
-		print "  " * nivel + str(self.valor)
+		print ("  " * nivel + str(self.valor))
 		for hijo in self.hijos:
 			hijo.imprimir(nivel + 1)
 
@@ -129,7 +129,6 @@ GAMMA_Regla = u"Gramatica"
 def parseador(regla, texto):
 	tabla = [Columna(i,tok) for i,tok in enumerate([None]+ texto.lower().split())]
 	tabla[0].agregar(Estado(GAMMA_Regla,Produccion(regla),0,tabla[0]))
-
 	for i,columna in enumerate(tabla):
 		for estado in columna:
 			if estado.esta_completado():
@@ -174,14 +173,25 @@ def contruir_arbole_ayuda(hijos, estado, indice_regla, fin_columna):
 	return salidas
 
 #sustantivo
+        
 SV = Regla("SV", Produccion("cine"), Produccion("peliculas"), Produccion("ninio"),
-	    Produccion("personas"), Produccion("pera"), Produccion("fruta"), Produccion("pack"))
+	    Produccion("personas"), Produccion("pera"), Produccion("fruta"), Produccion("pack"),Produccion("unidad"),Produccion("kilo"),Produccion("onza"),
+           Produccion("dozena"),Produccion("lado"),Produccion("costado"),Produccion("postre"),
+           Produccion("plata"),Produccion("comida"),Produccion("clase"),Produccion("tipo"),
+           Produccion("receta"),Produccion("ingrediente"),Produccion("tiempo"))
 #articulo
 AT = Regla("AT", Produccion("el"), Produccion("la"), Produccion("unas"))
 #verbo
-V = Regla("V", Produccion("vio"), Produccion("comieron"), Produccion("camino"), Produccion("jugo"), Produccion("pasa"))
+V = Regla("V", Produccion("vio"), Produccion("comieron"), Produccion("encontrar")
+          ,Produccion("camino"), Produccion("jugo"), Produccion("pasa"), Produccion("necesitar"),
+          Produccion("resistir"),Produccion("hacer"),Produccion("cocinar"),Produccion("preparar"),
+          Produccion("utilizar"),Produccion("aplicar"),Produccion("sugerir"),Produccion("recomendar"),
+          Produccion("tener"),Produccion("poder"),Produccion("deber"),Produccion("caracterizar"),Produccion("identificar"),Produccion("inventar"),Produccion("ser"))
+#adjetivo
+ADJ=Regla("ADJ",Produccion("principal"),Produccion("tipico"),Produccion("cerca"),Produccion("proximo")}
+
 #pre
-Prp = Regla("Prp", Produccion("con"), Produccion("en"), Produccion("al"))
+Prp = Regla("Prp", Produccion("con"), Produccion("en"), Produccion("al"),Produccion("de"),Produccion("para"),Produccion("por"))
 #Conjun
 Cj = Regla("cj")
 #Sujeto
@@ -194,7 +204,16 @@ Pr = Regla("VP", Produccion(V, St))
 Pr.agregar(Produccion(Pr, Cj))
 O = Regla("O", Produccion(St, Pr), Produccion(Pr))
 
+
+
+
+
+
+
+
+
+         
 for arbol in construir_arbol(parseador(O, "rufian pasa el pack")):
-    print "--------------------------"
+    print ("--------------------------")
     arbol.imprimir()
 
