@@ -215,6 +215,7 @@ Scual=Regla("Scual",Produccion (pronombres,V,))
 O = Regla("O", Produccion(St, Pr), Produccion(Pr), Produccion(Scomo))
 """  
 
+
 Vresistir = Regla("Vresistir", Produccion("resistir"))
 Vnecesitar = Regla("Vnecesitar", Produccion("necesitar"))
 Vencontrar = Regla("Vencontrar", Produccion("encontrar"))
@@ -227,7 +228,7 @@ VerboIdentificar = Regla("VerboIdentificar",Produccion("identificar"),Produccion
 Vpreparar = Regla("Vpreparar", Produccion("preparar"),Produccion("cocinar"),Produccion("hacer"),Produccion("hornear"))
 Vinventar = Regla("Vinventar", Produccion("inventar"))
 Vser = Regla("Vser", Produccion("ser"))
-SubProcedimiento=Regla("SubProcedimiento",Produccion("procedimiento"),Produccion("forma"),Produccion("temperatura")
+SubProcedimiento=Regla("SubProcedimiento",Produccion("procedimiento"),Produccion("forma"),Produccion("temperatura"),
         Produccion("coccion"),Produccion("manera"))
 ProRel = Regla("ProRel",Produccion("que"))
 AdjCerca= Regla("AdjCerca",Produccion("cerca"),Produccion("proximo"))
@@ -261,8 +262,97 @@ ProCuanto = Regla("ProCuanto",Produccion("cuanto"))
 ProComo = Regla("ProComo",Produccion("como"))
 
 
+vmi=Regla("vmi",Produccion())
+vs=Regla("vs",Produccion())
+va=Regla("va",Produccion())
+nc=Regla("nc",Produccion())
+p=Regla("p",Produccion())
+pp=Regla("pp",Produccion())
+aq=Regla("aq",Produccion())
+sp=Regla("sp",Produccion())
+DetIndefinido=Regla("DetIndefinido",Produccion())
+DetDefinido=Regla("DetDefinido",Produccion())
+
+Verbo=Regla("Verbo",Produccion(vmi),Produccion(va),Produccion(vs))
+Sub=Regla("Sub",Produccion(nc))
+Det= Regla("Det",Produccion(DetDefinido),Produccion(DetIndefinido))
+Adj=Regla("Adj",Produccion(aq))
+ProRef= Regla("ProRef",Produccion(p),Produccion(pp))
+Prep=Regla("Prep",Produccion(sp))
+
+
+AdjuntoLugar= Regla("AdjuntoLugar",Produccion(PrepEn),Produccion(AdjCerca,Prepde),Produccion(PrepAl,SubLado,Prepde))
+AdjuntoLocalidad = Regla("AdjuntoLocalidad",Produccion(AdjuntoLugar,Entidadlocalidad))
+VNecesitarRef=Regla("VNecesitarRef",Produccion(ProRef,Vnecesitar))
+VerboAuxEncontrar = Regla("VerboAuxEncontrar",Produccion(ProRef,Vencontrar),Produccion(Vencontrar),Produccion(Vdeber,Vencontrar))
+VerboAuxProducir = Regla("VerboAuxProducir",Produccion(ProRef,Vproducir),Produccion(ProRef,Vdeber,Vproducir),Produccion(Vdeber,Vproducir),Produccion(Vproducir))
+VerboAuxTener = Regla("VerboAuxTener",Produccion(ProRef,Vdeber,Vtener),Produccion(Vdeber,Vtener))
+VerboAuxComprar= Regla("VerboAuxComprar",Produccion(ProRef,Vdeber,Vcomprar),Produccion(ProRef,Vcomprar),Produccion(Vdeber,Vcomprar),Produccion(Vcomprar))
+VerboAuxUtilizar= Regla("VerboAuxUtilizar",Produccion(ProRef,Vdeber,Vutilizar),Produccion(ProRef,Vutilizar),Produccion(Vdeber,Vutilizar))
+VerboRefPreparar= Regla("VerboRefPreparar",Produccion(Vpreparar),Produccion(ProRef,Vpreparar),Produccion(Vdeber,Vpreparar))
+VerboAuxPreparar= Regla("VerboAuxPreparar",Produccion(ProRef,Vdeber,Vpreparar),Produccion(Vdeber,Vpreparar))
+SEntidadPlato=Regla("SEntidadPlato",Produccion(EntidadPlato),Produccion(Det,EntidadPlato),Produccion(DetIndefinido,SubPlato,Prepde,EntidadPlato))
+
+SVNecesitarPrepararPlato=Regla("SVNecesitarPrepararPlato",Produccion(VNecesitarRef,PrepPara,Vpreparar,EntidadPlato),Produccion(Vnecesitar,SEntidadPlato))
+SVPrepararPlato=Regla("SVPrepararPlato",Produccion(Vpreparar,SEntidadPlato))
+SEntidadIngrediente=Regla("SEntidadIngrediente",Produccion(EntidadIngrediente),Produccion(Det,EntidadIngrediente))
+SEntidadLocalidad=Regla("SEntidadLocalidad",Produccion(Entidadlocalidad),Produccion(Det,Entidadlocalidad))
+SubordinadoPlato=Regla("SubordinadoPlato",Produccion(ProRel,VerboAuxPreparar,SEntidadPlato),Produccion(PrepEn,ProRel,VerboAuxPreparar,SEntidadPlato))
+SubordinadoLocalidad=Regla("SubordinadoLocalidad",Produccion(ProRel,VerboIdentificar,SEntidadLocalidad))
+
+UnidadesIngredientes=Regla("UnidadesIngredientes",Produccion(SubIngrediente),Produccion(SubMedida,Prepde,EntidadIngrediente))
+TargetIngrediente=Regla("TargetIngrediente",Produccion(SubIngrediente),Produccion(SubTipo,Prepde,EntidadIngrediente))
+
+SNComida=Regla("SNComida",Produccion(SubComida),Produccion(Det,SubComida),Produccion(SubComida,Adjprincipal),Produccion(Det,SubComida,Adjprincipal))
+SNIngrediente=Regla("SNIngrediente",Produccion(SubIngrediente),Produccion(Det,SubIngrediente),Produccion(SubIngrediente,Adjprincipal),Produccion(Det,SubIngrediente,Adjprincipal))
+SNReceta=Regla("SNReceta",Produccion(SubReceta),Produccion(Det,SubReceta),Produccion(SubReceta,Adjprincipal),Produccion(Det,SubReceta,Adjprincipal))
+SNRecetaIngrediente=Regla("SNRecetaIngrediente",Produccion(SNReceta),Produccion(SNIngrediente),Produccion(SNIngrediente,Prepde,SNReceta),Produccion(SNReceta,Prepde,SNIngrediente))
+SNProcedimiento=Regla("SNProcedimiento",Produccion(SubProcedimiento),Produccion(Det,SubProcedimiento))
+
+SPrepEntidadLocalidad=Regla("SPrepEntidadLocalidad",Produccion(Prepde,SEntidadLocalidad),Produccion(PrepEn,SEntidadLocalidad))
+SPrepEntidadPlato=Regla("SPrepEntidadPlato",Produccion(Prepde,SEntidadPlato),Produccion(PrepEn,SEntidadPlato))
+
+
+
+SNominal=Regla("SNominal",Produccion(Sub),Produccion(Det,Sub),Produccion(Sub,Adj),Produccion(Det,Sub,Adj),Produccion(ProRef))
+Sverbal=Regla("Sverbal",Produccion(Verbo,SNominal),Produccion(Verbo,SNominal,ProRel))
+
+SujetoPlato=Regla("SujetoPlato",Produccion(SEntidadPlato),Produccion(SNominal,Prep,SEntidadPlato),Produccion(SPrepEntidadPlato,Prep,SNominal))
+SujetoIngrediente=Regla("SujetoIngrediente",Produccion(SEntidadIngrediente),Produccion(SNominal,Prep,SEntidadPlato),Produccion(SEntidadPlato,Prep,SNominal))
+
+SujetoEntidad=Regla("SujetoEntidad",Produccion(SujetoPlato),Produccion(SujetoIngrediente))
+
+Motivo=Regla("Motivo",Produccion(SujetoEntidad,Sverbal),Produccion(Sverbal,SujetoEntidad))
+MotivoMenor=Regla("MotivoMenor",Produccion(SNominal,Sverbal))
+
+
+SentenciaComo=Regla("SentenciaComo",Produccion(ProComo,VerboRefPreparar,SEntidadPlato))
+SentenciaPorque=Regla("SentenciaPorque",Produccion(PrepPor,ProQue,Motivo))
+SentenciaCuantoTiempo=Regla("SentenciaCuantoTiempo",Produccion(ProCuanto,SubTiempo,Vresistir,SEntidadPlato))
+SentenciaCuantoResiste=Regla("SentenciaCuantoResiste",Produccion(ProCuanto,Vresistir,SEntidadPlato))
+SentenciaCuantoUnidades=Regla("SentenciaCuantoUnidades",Produccion(ProCuanto,UnidadesIngredientes,SVNecesitarPrepararPlato))
+SentenciaCuanto=Regla("SentenciaCuanto",Produccion(SentenciaCuantoUnidades),Produccion(SentenciaCuantoResiste),Produccion(SentenciaCuantoTiempo))
+
+SentenciaDondeEsHecho=Regla("SentenciaDondeEsHecho",Produccion(ProDonde,VerboAuxProducir,SEntidadPlato),Produccion(ProDonde,VerboAuxEncontrar,SEntidadPlato))
+SentenciaDondeConseguir=Regla("SentenciaDondeConseguir",Produccion(ProDonde,VerboAuxComprar,SEntidadPlato),Produccion(ProDonde,VerboAuxComprar,SEntidadPlato,SPrepEntidadLocalidad))
+
+SentenciaQueDefinicion=Regla("SentenciaQueDefinicion",Produccion(ProQue,Vser,SEntidadPlato),Produccion(ProQue,Vser,SEntidadIngrediente))
+SentenciaQueIngrediente=Regla("SentenciaQueIngrediente",Produccion(ProQue,TargetIngrediente,VerboAuxUtilizar,PrepPara,SVPrepararPlato),Produccion(ProQue,TargetIngrediente,Vtener,SEntidadPlato),Produccion(ProQue,TargetIngrediente,VerboAuxTener,SEntidadPlato))
+SentenciaQueProcedimiento=Regla("SentenciaQueProcedimiento",Produccion(ProQue,SubProcedimiento,VerboAuxPreparar,SEntidadPlato),Produccion(ProQue,SubProcedimiento,VerboAuxUtilizar,PrepPara,SVPrepararPlato))
+SentenciaQue=Regla("SentenciaQue",Produccion(SentenciaQueProcedimiento),Produccion(SentenciaQueIngrediente),Produccion(SentenciaQueDefinicion))
+SentenciaQuien=Regla("SentenciaQuien",Produccion(ProQuien,Vinventar,SEntidadPlato))
+SentenciaCualProcedimiento=Regla("SentenciaCualProcedimiento",Produccion(ProCual,Vser,SNProcedimiento,PrepDePara,SVPrepararPlato),Produccion(ProCual,Vser,SNProcedimiento,SubordinadoPlato))
+SentenciaCualPlatoTipico=Regla("SentenciaCualPlatoTipico",Produccion(ProCual,Vser,SNComida,SPrepEntidadLocalidad),Produccion(ProCual,Vser,SNComida,SubordinadoLocalidad))
+SentenciaCualTarget=Regla("SentenciaCualTarget",Produccion(ProCual,Vser,SNRecetaIngrediente,SPrepEntidadPlato))
+SentenciaCual=Regla("SentenciaCual",Produccion(SentenciaCualTarget),Produccion(SentenciaCualProcedimiento),Produccion(SentenciaCualPlatoTipico))
+
+S=Regla("S",Produccion(SentenciaCual),Produccion(SentenciaQue),Produccion(SentenciaQuien),Produccion(SentenciaCuanto),Produccion(SentenciaComo),Produccion(SentenciaPorque))
+
+
+
+""" 
 for arbol in construir_arbol(parseador(O, "como pasa el pack")):
     print ("--------------------------")
     arbol.imprimir()
 
-
+""" 
