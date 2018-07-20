@@ -220,14 +220,14 @@ Vresistir = Regla("Vresistir", Produccion("resistir"),Produccion("cuesta"))
 Vnecesitar = Regla("Vnecesitar", Produccion("necesitar"),Produccion("necesitan"))
 Vencontrar = Regla("Vencontrar", Produccion("encontrar"))
 Vproducir = Regla("Vproducir", Produccion("producir"))
-Vcomprar = Regla("Vcomprar", Produccion("comprar"))
+Vcomprar = Regla("Vcomprar", Produccion("comprar"),Produccion("hacen"),Produccion("encuentro"),Produccion("encontrar"),Produccion("compro"),Produccion("consigo"),Produccion("preparan"))
 Vtener = Regla("Vtener", Produccion("tener"))
 Vutilizar = Regla("Vutilizar", Produccion("utilizar"))
-Vdeber = Regla("Vdeber", Produccion("deber"))
+Vdeber = Regla("Vdeber", Produccion("deber"), Produccion("puede"))
 VerboIdentificar = Regla("VerboIdentificar",Produccion("identificar"),Produccion("caracterizar"))
-Vpreparar = Regla("Vpreparar", Produccion("preparar"),Produccion("prepara"),Produccion("cocinar"),Produccion("hacer"),Produccion("hace"),Produccion("hornear"))
+Vpreparar = Regla("Vpreparar", Produccion("preparar"),Produccion("prepara"),Produccion("cocinar"),Produccion("hacer"),Produccion("hacen"),Produccion("hace"),Produccion("hornear"))
 Vinventar = Regla("Vinventar", Produccion("inventar"),Produccion("inventó"),Produccion("invento"))
-Vser = Regla("Vser", Produccion("ser"),Produccion("es"))
+Vser = Regla("Vser", Produccion("ser"),Produccion("es"),Produccion("son"))
 SubProcedimiento=Regla("SubProcedimiento",Produccion("procedimiento"),Produccion("forma"),Produccion("temperatura"),
         Produccion("coccion"),Produccion("manera"),Produccion("método"))
 ProRel = Regla("ProRel",Produccion("que"))
@@ -235,13 +235,13 @@ AdjCerca= Regla("AdjCerca",Produccion("cerca"),Produccion("proximo"))
 Adjprincipal= Regla("Adjprincipal",Produccion("principal"),Produccion("tipico"))
 
 SubTiempo = Regla("SubTiempo",Produccion("tiempo"))
-SubMedida = Regla("SubMedida",Produccion("unidad"),Produccion("kilo"),Produccion("kilos"),Produccion("onza"),Produccion("dozena"))
+SubMedida = Regla("SubMedida",Produccion("unidad"),Produccion("kilo"),Produccion("kilos"),Produccion("calorias"),Produccion("onza"),Produccion("dozena"))
 SubLado = Regla("SubLado",Produccion("lado"),Produccion("costado"))
 SubTipo = Regla("SubTipo",Produccion("clase"),Produccion("tipo"))
 SubComida = Regla("SubComida",Produccion("postre"),Produccion("plato"),Produccion("comida"))
 SubPlato = Regla("SubPlato",Produccion("postre"),Produccion("plato"))
 SubReceta = Regla("SubReceta",Produccion("receta"))
-SubIngrediente = Regla("SubIngrediente",Produccion("ingrediente"))
+SubIngrediente = Regla("SubIngrediente",Produccion("ingredientes"),Produccion("ingrediente"))
 
 PrepPor = Regla("Prepor",Produccion("por"))
 PrepAl = Regla("PreAl",Produccion("al"))
@@ -254,18 +254,18 @@ EntidadIngrediente = Regla("EntidadIngrediente",Produccion("INGREDIENTE"),Produc
     Produccion("ají"),Produccion("yatan"),Produccion("ocopa"),Produccion("pellejo"),Produccion("cuy"),Produccion("venado"),
     Produccion("rocoto"),Produccion("chanca_serrana"),Produccion("plátano"),Produccion("frejol"),Produccion("canela"),
     Produccion("huacatay"),Produccion("maní"),Produccion("cecina"),Produccion("chalona"),Produccion("pescado"),Produccion("lagartos"),
-    Produccion("carne"),Produccion("chancho"))
-Entidadlocalidad = Regla("Entidadlocalidad",Produccion("LOCALIDAD"))
-EntidadPlato = Regla("EntidadPlato",Produccion("PLATO"),Produccion("ají_de_gallina"),Produccion("cau_cau"),
+    Produccion("carne"),Produccion("chancho"),Produccion("ají_panca"))
+Entidadlocalidad = Regla("Entidadlocalidad",Produccion("LOCALIDAD"),Produccion("lima"),Produccion("arequipa"),Produccion("cuzco"))
+EntidadPlato = Regla("EntidadPlato",Produccion("pato"),Produccion("ají_de_gallina"),Produccion("cau_cau"),
     Produccion("aguadito"),Produccion("queso_helado"),Produccion("ceviche"),Produccion("lomo_saltado"),Produccion("caldo_de_chairo"),
     Produccion("arroz_con_pollo"),Produccion("suri"),Produccion("arroz_con_pato"),Produccion("papa_rellena"),Produccion("rocoto_relleno"),
     Produccion("sopa_de_menestron"),Produccion("cuy_chactado"),Produccion("pachamanca"),Produccion("arroz_zambito"),Produccion("masato"),
     Produccion("caucau"),Produccion("tiradito"),Produccion("kam_lu_wantan"),Produccion("cuy_colorado"),Produccion("anticuchos"),
-    Produccion("tamales"),Produccion("queso_asado"),Produccion("carapulcra"),Produccion("pisco_sour"),Produccion("mazamorra")
+    Produccion("tamales"),Produccion("queso_asado"),Produccion("carapulcra"),Produccion("pisco_sour"),Produccion("mazamorra"),Produccion("cuy")
     ,Produccion("arroz_con_leche"),Produccion("chicharron_de_calamar"),Produccion("sarza_de_patitas"),Produccion("chicha_de_jora")
     ,Produccion("chairo"),Produccion("adobo_de_chancho"),Produccion("kankacho"),Produccion("juanes"),Produccion("chaufa"),
-    Produccion("pastel_de_papa"),Produccion("soltero_de_queso"),Produccion("ocopa_arequipeña"),Produccion("enmariñado"),
-    Produccion("platos_agridulces"),Produccion("caparina"),Produccion("chancho_al_horno"),Produccion("ensalada_césar"))
+    Produccion("pastel_de_papa"),Produccion("soltero_de_queso"),Produccion("ocopa_arequipeña"),Produccion("enmariñado"),Produccion("papa_a_la_huancaina"),Produccion("puré_de_papa"),
+    Produccion("platos_agridulces"),Produccion("cecina"),Produccion("caparinas"),Produccion("lagarto"),Produccion("venado"),Produccion("sancochado"),Produccion("chicharron_de_chancho"),Produccion("caparina"),Produccion("chancho_al_horno"),Produccion("ensalada_césar"))
 
 ProCual = Regla("ProCual",Produccion("cual"))
 ProQuien = Regla("ProQuien",Produccion("quien"),Produccion("quién"))
@@ -278,13 +278,13 @@ ProComo = Regla("ProComo",Produccion("como"),Produccion("cómo"))
 vmi=Regla("vmi",Produccion())
 vs=Regla("vs",Produccion())
 va=Regla("va",Produccion())
-nc=Regla("nc",Produccion())
+nc=Regla("nc",Produccion("diferencia"))
 p=Regla("p",Produccion("se"))
-pp=Regla("pp",Produccion())
+pp=Regla("pp",Produccion("puede"),Produccion("puedo"))
 aq=Regla("aq",Produccion())
-sp=Regla("sp",Produccion())
-DetIndefinido=Regla("DetIndefinido",Produccion("un"))
-DetDefinido=Regla("DetDefinido",Produccion("el"),Produccion("del"),Produccion("la"))
+sp=Regla("sp",Produccion("entre"))
+DetIndefinido=Regla("DetIndefinido",Produccion("un"),Produccion("unos"))
+DetDefinido=Regla("DetDefinido",Produccion("el"),Produccion("del"),Produccion("la"),Produccion("las"),Produccion("los"))
 
 Verbo=Regla("Verbo",Produccion(vmi),Produccion(va),Produccion(vs))
 Sub=Regla("Sub",Produccion(nc))
@@ -300,7 +300,7 @@ VNecesitarRef=Regla("VNecesitarRef",Produccion(ProRef,Vnecesitar))
 VerboAuxEncontrar = Regla("VerboAuxEncontrar",Produccion(ProRef,Vencontrar),Produccion(Vencontrar),Produccion(Vdeber,Vencontrar))
 VerboAuxProducir = Regla("VerboAuxProducir",Produccion(ProRef,Vproducir),Produccion(ProRef,Vdeber,Vproducir),Produccion(Vdeber,Vproducir),Produccion(Vproducir))
 VerboAuxTener = Regla("VerboAuxTener",Produccion(ProRef,Vdeber,Vtener),Produccion(Vdeber,Vtener))
-VerboAuxComprar= Regla("VerboAuxComprar",Produccion(ProRef,Vdeber,Vcomprar),Produccion(ProRef,Vcomprar),Produccion(Vdeber,Vcomprar),Produccion(Vcomprar))
+VerboAuxComprar= Regla("VerboAuxComprar",Produccion(ProRef,Vcomprar),Produccion(ProRef,Vdeber,Vcomprar),Produccion(Vdeber,Vcomprar),Produccion(Vcomprar))
 VerboAuxUtilizar= Regla("VerboAuxUtilizar",Produccion(ProRef,Vdeber,Vutilizar),Produccion(ProRef,Vutilizar),Produccion(Vdeber,Vutilizar),Produccion(Vutilizar))
 VerboRefPreparar= Regla("VerboRefPreparar",Produccion(Vpreparar),Produccion(ProRef,Vpreparar),Produccion(Vdeber,Vpreparar))
 VerboAuxPreparar= Regla("VerboAuxPreparar",Produccion(ProRef,Vdeber,Vpreparar),Produccion(Vdeber,Vpreparar))
@@ -318,8 +318,8 @@ TargetIngrediente=Regla("TargetIngrediente",Produccion(SubIngrediente),Produccio
 
 SNComida=Regla("SNComida",Produccion(SubComida),Produccion(Det,SubComida),Produccion(SubComida,Adjprincipal),Produccion(Det,SubComida,Adjprincipal))
 SNIngrediente=Regla("SNIngrediente",Produccion(SubIngrediente),Produccion(Det,SubIngrediente),Produccion(SubIngrediente,Adjprincipal),Produccion(Det,SubIngrediente,Adjprincipal))
-SNReceta=Regla("SNReceta",Produccion(SubReceta),Produccion(Det,SubReceta),Produccion(SubReceta,Adjprincipal),Produccion(Det,SubReceta,Adjprincipal))
-SNRecetaIngrediente=Regla("SNRecetaIngrediente",Produccion(SNReceta),Produccion(SNIngrediente),Produccion(SNIngrediente,PrepDe,SNReceta),Produccion(SNReceta,PrepDe,SNIngrediente))
+SNReceta=Regla("SNReceta",Produccion(SubReceta),Produccion(Det,SubReceta),Produccion(Det,SubIngrediente),Produccion(SubReceta,Adjprincipal),Produccion(Det,SubReceta,Adjprincipal))
+SNRecetaIngrediente=Regla("SNRecetaIngrediente",Produccion(SNReceta),Produccion(SNIngrediente),Produccion(SNIngrediente,PrepDe,SNReceta),Produccion(SNReceta,PrepDe,SNIngrediente),Produccion(SNReceta,PrepDe,SEntidadPlato))
 SNProcedimiento=Regla("SNProcedimiento",Produccion(SubProcedimiento),Produccion(Det,SubProcedimiento))
 
 SPrepEntidadLocalidad=Regla("SPrepEntidadLocalidad",Produccion(PrepDe,SEntidadLocalidad),Produccion(PrepEn,SEntidadLocalidad))
@@ -348,7 +348,8 @@ SentenciaCuantoUnidades=Regla("SentenciaCuantoUnidades",Produccion(ProCuanto,Uni
 SentenciaCuanto=Regla("SentenciaCuanto",Produccion(SentenciaCuantoUnidades),Produccion(SentenciaCuantoResiste),Produccion(SentenciaCuantoTiempo))
 
 SentenciaDondeEsHecho=Regla("SentenciaDondeEsHecho",Produccion(ProDonde,VerboAuxProducir,SEntidadPlato),Produccion(ProDonde,VerboAuxEncontrar,SEntidadPlato))
-SentenciaDondeConseguir=Regla("SentenciaDondeConseguir",Produccion(ProDonde,VerboAuxComprar,SEntidadPlato),Produccion(ProDonde,VerboAuxComprar,SEntidadPlato,SPrepEntidadLocalidad))
+SentenciaDondeConseguir=Regla("SentenciaDondeConseguir",Produccion(ProDonde,VerboAuxComprar,SEntidadPlato),Produccion(ProDonde,VerboAuxComprar,EntidadIngrediente),Produccion(ProDonde,VerboAuxComprar,SEntidadPlato,SPrepEntidadLocalidad))
+SentenciaDonde=Regla("SentenciaDonde",Produccion(SentenciaDondeConseguir),Produccion(SentenciaDondeEsHecho))
 
 SentenciaQueDefinicion=Regla("SentenciaQueDefinicion",Produccion(ProQue,Vser,SEntidadPlato),Produccion(ProQue,Vser,SEntidadIngrediente))
 SentenciaQueIngrediente=Regla("SentenciaQueIngrediente",Produccion(ProQue,TargetIngrediente,VerboAuxUtilizar,PrepPara,SVPrepararPlato),Produccion(ProQue,TargetIngrediente,Vtener,SEntidadPlato),Produccion(ProQue,TargetIngrediente,VerboAuxTener,SEntidadPlato))
@@ -361,12 +362,12 @@ SentenciaCualPlatoTipico=Regla("SentenciaCualPlatoTipico",Produccion(ProCual,Vse
 SentenciaCualTarget=Regla("SentenciaCualTarget",Produccion(ProCual,Vser,SNRecetaIngrediente,SPrepEntidadPlato))
 SentenciaCual=Regla("SentenciaCual",Produccion(SentenciaCualTarget),Produccion(SentenciaCualProcedimiento),Produccion(SentenciaCualPlatoTipico))
 
-S=Regla("S",Produccion(SentenciaCual),Produccion(SentenciaQue),Produccion(SentenciaQuien),Produccion(SentenciaCuanto),Produccion(SentenciaComo),Produccion(SentenciaPorque))
+S=Regla("S",Produccion(SentenciaDonde),Produccion(SentenciaCual),Produccion(SentenciaQue),Produccion(SentenciaQuien),Produccion(SentenciaCuanto),Produccion(SentenciaComo),Produccion(SentenciaPorque))
 
 
 
 
-for arbol in construir_arbol(parseador(S, "como se hace el aderezo del rocoto_relleno")):
+for arbol in construir_arbol(parseador(S, "como se prepara la ensalada_césar")):
     print ("--------------------------")
     arbol.imprimir()
 
