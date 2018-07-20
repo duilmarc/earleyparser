@@ -219,7 +219,7 @@ O = Regla("O", Produccion(St, Pr), Produccion(Pr), Produccion(Scomo))
 Vresistir = Regla("Vresistir", Produccion("resistir"),Produccion("cuesta"))
 Vnecesitar = Regla("Vnecesitar", Produccion("necesitar"),Produccion("necesitan"))
 Vencontrar = Regla("Vencontrar", Produccion("encontrar"))
-Vproducir = Regla("Vproducir", Produccion("producir"))
+Vproducir = Regla("Vproducir", Produccion("producir"),Produccion("produce"),Produccion("cocinar"),Produccion("cocina"))
 Vcomprar = Regla("Vcomprar", Produccion("comprar"),Produccion("hacen"),Produccion("encuentro"),Produccion("encontrar"),Produccion("compro"),Produccion("consigo"),Produccion("preparan"))
 Vtener = Regla("Vtener", Produccion("tener"))
 Vutilizar = Regla("Vutilizar", Produccion("utilizar"))
@@ -265,7 +265,7 @@ EntidadPlato = Regla("EntidadPlato",Produccion("pato"),Produccion("ají_de_galli
     ,Produccion("arroz_con_leche"),Produccion("chicharron_de_calamar"),Produccion("sarza_de_patitas"),Produccion("chicha_de_jora")
     ,Produccion("chairo"),Produccion("adobo_de_chancho"),Produccion("kankacho"),Produccion("juanes"),Produccion("chaufa"),
     Produccion("pastel_de_papa"),Produccion("soltero_de_queso"),Produccion("ocopa_arequipeña"),Produccion("enmariñado"),Produccion("papa_a_la_huancaina"),Produccion("puré_de_papa"),
-    Produccion("platos_agridulces"),Produccion("cecina"),Produccion("caparinas"),Produccion("lagarto"),Produccion("venado"),Produccion("sancochado"),Produccion("chicharron_de_chancho"),Produccion("caparina"),Produccion("chancho_al_horno"),Produccion("ensalada_césar"))
+    Produccion("platos_agridulces"),Produccion("cecina"),Produccion("pavo"),Produccion("caparinas"),Produccion("lagarto"),Produccion("venado"),Produccion("sancochado"),Produccion("chicharron_de_chancho"),Produccion("caparina"),Produccion("chancho_al_horno"),Produccion("ensalada_césar"))
 
 ProCual = Regla("ProCual",Produccion("cual"))
 ProQuien = Regla("ProQuien",Produccion("quien"),Produccion("quién"))
@@ -281,7 +281,7 @@ va=Regla("va",Produccion())
 nc=Regla("nc",Produccion("diferencia"))
 p=Regla("p",Produccion("se"))
 pp=Regla("pp",Produccion("puede"),Produccion("puedo"))
-aq=Regla("aq",Produccion())
+aq=Regla("aq",Produccion("mejor"))
 sp=Regla("sp",Produccion("entre"))
 DetIndefinido=Regla("DetIndefinido",Produccion("un"),Produccion("unos"))
 DetDefinido=Regla("DetDefinido",Produccion("el"),Produccion("del"),Produccion("la"),Produccion("las"),Produccion("los"))
@@ -304,7 +304,7 @@ VerboAuxComprar= Regla("VerboAuxComprar",Produccion(ProRef,Vcomprar),Produccion(
 VerboAuxUtilizar= Regla("VerboAuxUtilizar",Produccion(ProRef,Vdeber,Vutilizar),Produccion(ProRef,Vutilizar),Produccion(Vdeber,Vutilizar),Produccion(Vutilizar))
 VerboRefPreparar= Regla("VerboRefPreparar",Produccion(Vpreparar),Produccion(ProRef,Vpreparar),Produccion(Vdeber,Vpreparar))
 VerboAuxPreparar= Regla("VerboAuxPreparar",Produccion(ProRef,Vdeber,Vpreparar),Produccion(Vdeber,Vpreparar))
-SEntidadPlato=Regla("SEntidadPlato",Produccion(EntidadPlato),Produccion(Det,EntidadPlato),Produccion(DetIndefinido,SubPlato,PrepDe,EntidadPlato))
+SEntidadPlato=Regla("SEntidadPlato",Produccion(EntidadPlato),Produccion(Det,EntidadPlato),Produccion(Det,Adj,EntidadPlato),Produccion(DetIndefinido,SubPlato,PrepDe,EntidadPlato))
 
 SVNecesitarPrepararPlato=Regla("SVNecesitarPrepararPlato",Produccion(VNecesitarRef,PrepPara,Vpreparar,EntidadPlato),Produccion(Vnecesitar,SEntidadPlato))
 SVPrepararPlato=Regla("SVPrepararPlato",Produccion(Vpreparar,SEntidadPlato))
@@ -367,7 +367,7 @@ S=Regla("S",Produccion(SentenciaDonde),Produccion(SentenciaCual),Produccion(Sent
 
 
 
-for arbol in construir_arbol(parseador(S, "como se prepara la ensalada_césar")):
+for arbol in construir_arbol(parseador(S, "como se cocina el pavo")):
     print ("--------------------------")
     arbol.imprimir()
 
